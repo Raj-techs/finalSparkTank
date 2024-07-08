@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../../assests/bloodrop.png";
 
 const Header = ({
@@ -18,9 +18,9 @@ const Header = ({
 
   const navigate = useNavigate();
 
-  const scrollToSection = (ref) => {
-    ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  // const scrollToSection = (ref) => {
+  //   ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  // };
 
   const toggleSignupDropdown = () => {
     setIsSignupDropdownOpen(!isSignupDropdownOpen);
@@ -61,7 +61,7 @@ const Header = ({
               <div className="absolute bg-white text-black right-0 mt-2 w-48 rounded-lg shadow-lg">
                 <button
                   onClick={() => {
-                    scrollToSection(searchBloodBankRef);
+                    // scrollToSection(searchBloodBankRef);
                     setIsServicesDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
@@ -70,7 +70,7 @@ const Header = ({
                 </button>
                 <button
                   onClick={() => {
-                    scrollToSection(searchVoluntaryDonorsRef);
+                    // scrollToSection(searchVoluntaryDonorsRef);
                     setIsServicesDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
@@ -79,7 +79,7 @@ const Header = ({
                 </button>
                 <button
                   onClick={() => {
-                    scrollToSection(findNearBloodBanksRef);
+                    // scrollToSection(findNearBloodBanksRef);
                     setIsServicesDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
@@ -109,22 +109,23 @@ const Header = ({
                 </button>
                 <button
                   onClick={() => {
-                    scrollToSection(bloodBankRef);
+                    navigate('/admin/register')
+                    // scrollToSection(bloodBankRef);
                     setIsSignupDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
                   Blood Bank
                 </button>
-                <button
+                <Link to='/gov/register'><button
                   onClick={() => {
-                    scrollToSection(adminRef);
+                    // scrollToSection(adminRef);
                     setIsSignupDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
                   Admin
-                </button>
+                </button></Link>
               </div>
             )}
           </div>
@@ -148,7 +149,9 @@ const Header = ({
                 </button>
                 <button
                   onClick={() => {
-                    scrollToSection(bloodBankRef);
+                    navigate("/admin/login");
+
+                    // scrollToSection(bloodBankRef);
                     setIsSigninDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
@@ -157,7 +160,9 @@ const Header = ({
                 </button>
                 <button
                   onClick={() => {
-                    scrollToSection(adminRef);
+                    navigate("/gov/login");
+
+                    // scrollToSection(adminRef);
                     setIsSigninDropdownOpen(false);
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"

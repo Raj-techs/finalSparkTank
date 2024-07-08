@@ -1,41 +1,51 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../Footer'
+import axios from 'axios'
 
 const Status = () => {
+    const [myData,setmyData]=useState()
+
+
+    useEffect(_=>{
+        axios.get("http://localhost:4000/user/myprofile", {headers:{'token':localStorage.getItem('token')}}).then(res=>setmyData(res.data)).catch(err=>console.log(err))
+    },[myData])
+    console.log(localStorage.getItem('token'));
+    console.log(myData);
+    
     return (
         <>
-            <div className="container">
+        {myData && <div className="container">
                 <div className="my-status">
                     <b><h2>My Status</h2></b>
 
                     <div>
                         <div className="g">
                             <div className="g-img"></div>
-                            <div className="g-matter">O+</div>
+                            <div className="g-matter">{myData.group}</div>
                         </div>
                         <div className="state-details">
                             <div className='state-adduser'>
                                <table>
                                 <tr>
                                     <th>Donar Name :</th>
-                                    <td>Vishnu Raj</td>
+                                    <td>{myData.username}</td>
                                 </tr>
                                 <tr>
                                     <th>Group :</th>
-                                    <td>O+</td>
+                                    <td>{myData.group}</td>
                                 </tr>
                                 <tr>
                                     <th>Location :</th>
-                                    <td>Bhimavaram</td>
+                                    <td>{myData.address}</td>
                                 </tr>
                                 <tr>
                                     <th>Age :</th>
-                                    <td>19</td>
+                                    <td>{myData.age}</td>
                                 </tr>
                                 <tr>
                                     <th>Mobile No :</th>
-                                    <td>9866789205</td>
+                                    <td>{myData.mobileNo}</td>
                                 </tr>
                                </table>
                             </div>
@@ -73,7 +83,8 @@ const Status = () => {
                 Donating blood is a simple yet powerful way to make a difference in the world. Each donation can save multiple lives, providing critical support to those in need during emergencies, surgeries, and treatments for various medical conditions. The process is safe, quick, and immensely rewarding, knowing that your contribution could be a lifeline for someone else. 
                 </div>
             <Footer/>
-            </div>
+            </div> }
+            
         </>
     )
 }

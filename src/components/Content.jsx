@@ -7,7 +7,7 @@ import SingleGroup from '../pages/SingleGroup'
 import Transfer from '../pages/Transfer'
 import DisplayAdim from './DisplayAdim'
 
-const Content = () => {
+const Content = (props) => {
   const [showAddUser, setShowAddUser] = useState(false);
   const [showGroups, setShowGroups] = useState(false);
   const [showAllUsers, setShowAllUsers] = useState(false);
@@ -99,9 +99,9 @@ const Content = () => {
           </ul>
         </div>
         <div className="matter">
-          {showAddUser ? <AddUser /> : null}
-          {showAllUsers ? <AllUsers /> : null}
-          {showGroups ? <Groups /> : null}
+          {showAddUser ? <AddUser data={props.data}/> : null}
+          {showAllUsers ? <AllUsers data={props.data} /> : null}
+          {showGroups ? <Groups data={props.data} /> : null}
           {showUpdate ? <Update /> : null}
           {showTransfer ? <Transfer /> : null}
           {showDisplay ? <DisplayAdim /> : null}

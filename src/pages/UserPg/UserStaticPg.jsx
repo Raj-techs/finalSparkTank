@@ -44,6 +44,12 @@ const UserStaticPg = ({
   const toggleServicesDropdown = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    
+  
+    navigate('/login');
+  }
   return (
     <>
       {/* <div className="nav">
@@ -75,9 +81,9 @@ const UserStaticPg = ({
           <span className="ml-3 text-xl">BLOODROP</span>
         </div>
         <nav className="opts">
-          <a href="/" className="mr-5 hover:text-gray-900">
+          <Link to='/user/home'><a href="/" className="mr-5 hover:text-gray-900">
             HOME
-          </a>
+          </a></Link>
 
           <div className="relative">
             <button
@@ -119,82 +125,21 @@ const UserStaticPg = ({
             )}
           </div>
           <div className="relative">
-            <button
-              onClick={toggleSignupDropdown}
+            <Link to='/user/req'><button
               className="mr-5 hover:text-gray-900 cursor-pointer"
             >
-              SIGNUP
-            </button>
-            {isSignupDropdownOpen && (
-              <div className="absolute bg-white text-black right-0 mt-2 w-48 rounded-lg shadow-lg">
-                <button
-                  onClick={() => {
-                    navigate("/register");
-                    setIsSignupDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Donor
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection(bloodBankRef);
-                    setIsSignupDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Blood Bank
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection(adminRef);
-                    setIsSignupDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Admin
-                </button>
-              </div>
-            )}
+              REQUEST
+            </button></Link>
+            
           </div>
           <div className="relative">
             <button
               onClick={toggleSigninDropdown}
               className="mr-5 hover:text-gray-900 cursor-pointer"
             >
-              SIGNIN
+              BLOG
             </button>
-            {isSigninDropdownOpen && (
-              <div className="absolute bg-white text-black right-0 mt-2 w-48 rounded-lg shadow-lg">
-                <button
-                  onClick={() => {
-                    navigate("/login");
-                    setIsSigninDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Donor
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection(bloodBankRef);
-                    setIsSigninDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Blood Bank
-                </button>
-                <button
-                  onClick={() => {
-                    scrollToSection(adminRef);
-                    setIsSigninDropdownOpen(false);
-                  }}
-                  className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
-                >
-                  Admin
-                </button>
-              </div>
-            )}
+            
           </div>
           <a href="/about" className="mr-5 hover:text-gray-900">
             ABOUT US
@@ -214,6 +159,7 @@ const UserStaticPg = ({
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </button>
+        <button onClick={handleSignOut}>Sign Out</button>
       {/* </div> */}
     </nav>
       <Status/>

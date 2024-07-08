@@ -14,12 +14,19 @@ import Profile from './pages/HomePages/pages/Profile'
 import About from './pages/HomePages/pages/About'
 import Login from './pages/HomePages/pages/Login'
 import Register from './pages/HomePages/pages/Register'
+import BloodBankRegister from './pages/HomePages/pages/BloodBankRegister'
+import BloodBankLogin from './pages/HomePages/pages/BloodBankLogin'
+import AdminLogin from './pages/HomePages/pages/AdminLogin'
+import AdminRegister from './pages/HomePages/pages/AdminRegister'
+import { BankProvider } from './pages/HomePages/BankContext'; 
+
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
       {/* <Header/> */}
+      <BankProvider>
         <Routes>
           <Route path='/' element={<Home/>}/>
 
@@ -42,10 +49,16 @@ const App = () => {
           <Route path='/user/home' element={<UserStaticPg/>}/>
           <Route path='/user/req' element={<UserReq/>}/>
           
+          <Route path='/admin/register' element={<BloodBankRegister/>}/>
+          <Route path='/admin/login' element={<BloodBankLogin/>}/>
+          
           
           <Route path='/gov' element={<GovstaticPg/>}/>
           <Route path='/gov/details/:id' element={<DetailsGov/>}/>
+          <Route path='/gov/register' element={<AdminRegister/>}/>
+          <Route path='/gov/login' element={<AdminLogin/>}/>
         </Routes>
+        </BankProvider>
       </BrowserRouter>
     </>
   )

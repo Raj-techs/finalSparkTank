@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
-const Nav = () => {
+const Nav = (props) => {
+  // console.log(props);
+  const navigate = useNavigate()
   return (
     <>
       <div className="nav">
@@ -17,8 +19,8 @@ const Nav = () => {
         </div>
         <div className="more">
             <ul>
-                <h5>Login</h5>
-                <h5>SignUp</h5>
+                <h5 style={{marginTop:"34px"}}>{props.data}</h5>
+                <button onClick={_=>navigate('/')}>LogOut</button>
             </ul>
         </div>
       </div>

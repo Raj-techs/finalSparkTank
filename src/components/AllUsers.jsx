@@ -1,10 +1,48 @@
-import React from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { UsersData } from '../data/Users'
 import { Link } from 'react-router-dom'
-const AllUsers = () => {
+import axios from 'axios'
+export const UserContext = createContext();
+
+const AllUsers = (props) => {
+    const [users,setUsers]=useState([])
+    const [filterUsers, setfilterUsers] = useState([]);
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/users');
+                setUsers(response.data);
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        };
+
+        fetchUsers();
+    }, []);
+    useEffect(() => {
+    const filterUsersByBankName = () => {
+        // Filter users based on bankName
+        if (props.data.bankName.trim() === '') {
+            return ; // Return all users if bankName is empty
+        } else {
+            return users.filter(user => user.bankName === props.data.bankName);
+        }
+    };
+    // filterUsersByBankName();
+    const filteredUsers = filterUsersByBankName();
+    setfilterUsers(filteredUsers)
+    console.log("filtered bank name : ",filterUsers);
+}, [users, props.data.bankName]);
+
+    // console.log(users);
+    // console.log(props.data.bankName);
+    // let myUsers = users.find(usr=>usr.bankName === props.data.bankName)
+
     return (
         <>
-            <div>
+
+            {/* <UserContext.Provider value={filterUsers}> */}
+            <div style={{marginTop:"380px"}}>
             <h1>BLOOD GROUPS... 🩸</h1>
             <div class="button-container">
                 <button>A+</button>
@@ -37,26 +75,32 @@ const AllUsers = () => {
                         </div>
                     </div>
                 </div>
-                <button id="submit">submit</button>
+                <button id="submit" style={{marginBottom:"20px"}}>submit</button>
             </div>
-            <div className="heading">
-                <b>Name</b>
-                <b>Group</b>
-                <b>Mobile No</b>
-                <b>More</b>
-            </div>
-            <div className="usr">
-                {UsersData.map(items=>{
-                    return(<div>
-                        <div><img src={items.img} width={60} height={60} style={{ borderRadius: "50%" }} alt="" />
-                            <p style={{ marginTop: "15px", marginLeft: "15px" }}>{items.name}</p></div>
-                        <div className="group">{items.group}</div>
-                        <div className="mobileNo">{items.mobileNo}</div>
+            <table style={{width:"100%"}}>
+                <tr>
+                <th>Name</th>
+                <th>Group</th>
+                <th>Age</th>
+                <th>Location</th>
+                <th>Mothile No</th>
+                <th>More</th>
+                </tr>
+                {filterUsers.map(items=>{
+                    return(<tr style={{margin:"20px"}}>
+                        <td style={{margin:"10px"}}><i class="fa-solid fa-user"></i>
+                            <p style={{ marginTop: "15px", marginLeft: "15px" }}>{items.name}</p></td>
+                        <td className="group">{items.group}</td>
+                        <td className="group">{items.age}</td>
+                        <td className="group">{items.location}</td>
+                        <td className="mobileNo">{items.mobile}</td>
                         <Link to={`/details/${items.id}`} style={{color:"white",textDecoration:"none"}}><button className='btn'>Details</button></Link>
-                    </div>)
+                    </tr>)
                 })}
+            </table>
+            
             </div>
-            </div>
+            {/* </UserContext.Provider> */}
         </>
     )
 }

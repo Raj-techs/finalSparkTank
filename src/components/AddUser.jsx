@@ -1,6 +1,40 @@
-import React from 'react'
+import React, { StrictMode, useState } from 'react'
+import axios from 'axios';
+const AddUser = (props) => {
+    console.log(props);
+    const [userData, setUserData] = useState({
+        name: '',
+        group: '',
+        location: '',
+        age: '',
+        mobile: '',
+        bankName:props.data.bankName
+    });
+    const {name,group,location,age,mobile}=userData
 
-const AddUser = () => {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserData({ ...userData, [name]: value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(userData);
+        try {
+            
+            await axios.post('http://localhost:3000/users', userData); // Replace with your JSON Server endpoint
+            setUserData({
+                name: '',
+                group: '',
+                location: '',
+                age: '',
+                mobile: ''
+            });
+            alert("User Added Successfully .")
+        } catch (error) {
+            console.error('Error adding user:', error);
+        }
+    };
     return (
         <>
             <div className="adduser ">
@@ -8,23 +42,23 @@ const AddUser = () => {
                 <div className='inner-adduser'>
                     <h2 style={{color:"darkred",fontWeight:"bolder"}}><u>Add User</u></h2>
                     <div className='input-div'>
-                         <span>Name</span> : <input type="text" />
+                         <span>Name</span> : <input type="text" value={name} name='name'  onChange={handleChange} />
                     </div>
                     <div className='input-div'>
-                             <span>Group</span> : <input type="text" />
+                             <span>Group</span> : <input type="text" value={group}name='group'  onChange={handleChange} />
                     </div>
 
                         <div className='input-div'>
-                             <span>Location</span> : <input type="text" />
+                             <span>Location</span> : <input type="text" value={location} name='location'  onChange={handleChange} />
                         </div>
                     <div className='input-div'>
-                             <span>Age</span> : <input type="number" />
+                             <span>Age</span> : <input type="number" value={age} name='age' onChange={handleChange}/>
                     </div>
 
                         <div className='input-div'>
-                            <span> Mobile NO.</span> : <input type="text" />
+                            <span> Mobile NO.</span> : <input type="text" value={mobile} name='mobile'  onChange={handleChange} />
                         </div>
-                    <button>Add</button>
+                    <button onClick={handleSubmit}>Add</button>
                 </div>
                 {/* <div className="gif">
                     
