@@ -30,7 +30,7 @@ const RequestPg = () => {
                             <td><div className="group">{items.units}</div></td>
                             <td><div className="group">{items.usrlocation}</div></td>
                             <td> <div className="mobileNo">{items.date}</div></td>
-                            <td> <div className="mobileNo">{items.certificates}</div></td>
+                            <td> <div className="mobileNo">{items.certificates.length}</div></td>
                             <td> <div className="mobileNo">{items.mobile}</div></td>
                            
                             <td><Link to={`/gov/details/${items.id}`}><button className='btn'>More</button></Link></td>

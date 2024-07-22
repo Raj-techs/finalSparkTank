@@ -42,7 +42,7 @@ const AllUsers = (props) => {
         <>
 
             {/* <UserContext.Provider value={filterUsers}> */}
-            <div style={{marginTop:"380px"}}>
+            <div className='all-users' style={{marginTop:"380px"}}>
             <h1>BLOOD GROUPS... 🩸</h1>
             <div class="button-container">
                 <button>A+</button>
@@ -79,22 +79,24 @@ const AllUsers = (props) => {
             </div>
             <table style={{width:"100%"}}>
                 <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Group</th>
                 <th>Age</th>
                 <th>Location</th>
-                <th>Mothile No</th>
+                <th>Mobile No</th>
                 <th>More</th>
                 </tr>
                 {filterUsers.map(items=>{
-                    return(<tr style={{margin:"20px"}}>
-                        <td style={{margin:"10px"}}><i class="fa-solid fa-user"></i>
-                            <p style={{ marginTop: "15px", marginLeft: "15px" }}>{items.name}</p></td>
+                    return(<tr >
+                        <td className="group">{items.id}</td>
+                        <td ><i class="fa-solid fa-user m-0"></i>
+                            <p>{items.name}</p></td>
                         <td className="group">{items.group}</td>
                         <td className="group">{items.age}</td>
                         <td className="group">{items.location}</td>
                         <td className="mobileNo">{items.mobile}</td>
-                        <Link to={`/details/${items.id}`} style={{color:"white",textDecoration:"none"}}><button className='btn'>Details</button></Link>
+                        <td><Link to={`/details/${items.id}`} style={{color:"white",textDecoration:"none"}}><button className='btn'>Details</button></Link></td>
                     </tr>)
                 })}
             </table>

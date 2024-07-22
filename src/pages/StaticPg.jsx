@@ -10,7 +10,7 @@ const StaticPg = () => {
   console.log(bank);
   return (
     <>
-      <Nav data={bank.bankName} />
+      <Nav data={bank} />
       <Content data={bank}/>
       {/* <Details/> */}
       <Footer/>

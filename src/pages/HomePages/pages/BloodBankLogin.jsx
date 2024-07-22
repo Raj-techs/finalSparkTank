@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../../../components/HomeComponents/components/Header";
 import axios from "axios";
 import { BankProvider, useBank } from "../BankContext";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
@@ -30,17 +31,16 @@ const Login = () => {
 
                 if (matchedBank) {
                     setBank(matchedBank);
-                    alert("Bank matched");
-                    console.log("bank matched",mybank);
+                    toast.success("Bank Logged Successfully",mybank);
                     setTimeout(() => {
                         console.log('Navigating to /admin');
                         navigate('/admin');
                       }, 0);
                 } else {
-                    alert('Invalid bank name or password');
+                    toast.error('Invalid bank name or password');
                 }
             } else {
-                alert('Invalid bank name or password');
+                toast.error('Invalid bank name or password');
             }
         } catch (error) {
             console.error('Error during login:', error);
@@ -86,7 +86,7 @@ return (
              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                  <input
                      type="text"
-                     placeholder="Enter your contact person email"
+                     placeholder="Enter Bank Name"
                      name="getbankName"
                      onChange={e=>setgetBankName(e.target.value)}
                      className="bg-gray-200 rounded-lg p-3 mt-7"

@@ -1,5 +1,6 @@
 import React, { StrictMode, useState } from 'react'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const AddUser = (props) => {
     console.log(props);
     const [userData, setUserData] = useState({
@@ -30,7 +31,7 @@ const AddUser = (props) => {
                 age: '',
                 mobile: ''
             });
-            alert("User Added Successfully .")
+            toast.success("User Added Successfully.")
         } catch (error) {
             console.error('Error adding user:', error);
         }

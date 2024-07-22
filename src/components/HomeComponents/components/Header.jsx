@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../../../assests/bloodrop.png";
+import { toast } from 'react-toastify';
 
 const Header = ({
   bloodBankRef,
@@ -33,6 +34,10 @@ const Header = ({
   const toggleServicesDropdown = () => {
     setIsServicesDropdownOpen(!isServicesDropdownOpen);
   };
+  const notify = () => {
+    toast.success("This is a success message!");
+    // You can also use toast.error, toast.info, etc.
+};
 
   return (
     <nav className="body-font bg-red-800 text-white h-20 ">
@@ -45,15 +50,17 @@ const Header = ({
           />
           <span className="ml-3 text-xl">BLOODROP</span>
         </div>
-        <nav className="opts">
-          <a href="/" className="mr-5 hover:text-gray-900">
+        <nav className="opts h-14" >
+          <a href="/" className="mr-5  hover:text-gray-900" onClick={notify}>
             HOME
           </a>
+          
 
           <div className="relative">
             <button
               onClick={toggleServicesDropdown}
               className="mr-5 hover:text-gray-900 cursor-pointer"
+              style={{zIndex:"100"}}
             >
               SERVICES
             </button>
@@ -63,6 +70,8 @@ const Header = ({
                   onClick={() => {
                     // scrollToSection(searchBloodBankRef);
                     setIsServicesDropdownOpen(false);
+                    navigate("/search-b-banks")
+
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
@@ -72,6 +81,7 @@ const Header = ({
                   onClick={() => {
                     // scrollToSection(searchVoluntaryDonorsRef);
                     setIsServicesDropdownOpen(false);
+                    navigate("/search-donars")
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
@@ -81,6 +91,7 @@ const Header = ({
                   onClick={() => {
                     // scrollToSection(findNearBloodBanksRef);
                     setIsServicesDropdownOpen(false);
+                    navigate('/search-near-banks')
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
@@ -105,7 +116,7 @@ const Header = ({
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
-                  Donor
+                  Blood Account SignUp
                 </button>
                 <button
                   onClick={() => {
@@ -145,7 +156,7 @@ const Header = ({
                   }}
                   className="block px-4 py-2 text-sm hover:bg-gray-200 w-full text-left"
                 >
-                  Donor
+                  Blood Account SignIn
                 </button>
                 <button
                   onClick={() => {

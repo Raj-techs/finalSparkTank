@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../../../components/HomeComponents/components/Header";
 import axios from "axios";
+import { toast } from 'react-toastify'; 
 
 const Login = () => {
   const [token,setToken]=useState()
@@ -20,21 +21,22 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const response = await axios.get('http://localhost:3000/registered');
+      const user = response.data.find(
+        user => user.email === formData.email && user.password === formData.password
+      );
 
-   
-      const res = axios.post("http://localhost:4000/user/login",formData).then(res=>localStorage.setItem("token",res.data.token))
-      // const data = await res.json();
-      console.log(res);
-      // if (!res.ok) {
-      //   throw new Error(data.error || "Login failed");
-      // }
-
-      alert("Login successful!");
-
-      navigate("/user/home");
+      if (user) {
+        localStorage.setItem('email', user.email);
+        localStorage.setItem('username', user.username);
+        toast.success("😁 Login successful!");
+        navigate('/user/home');
+      } else {
+        // alert('Invalid email or password');
+        toast.error('😠 Invalid email or password');
+      }
     } catch (error) {
-      alert(error.message);
-      console.error("Error:", error);
+      console.error('There was an error logging in!', error);
     }
   };
 
