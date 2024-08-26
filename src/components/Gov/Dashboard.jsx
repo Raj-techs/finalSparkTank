@@ -7,11 +7,11 @@ const Dashboard = () => {
     const [donorsCount, setDonorsCount] = useState(0);
 
     useEffect(() => {
-        axios.get("http://localhost:3000/banks")
+        axios.get("https://json-server-api-vcou.onrender.com/banks")
             .then(res => setBanks(res.data))
             .catch(error => console.error("Error fetching banks:", error));
 
-        axios.get("http://localhost:3000/registered")
+        axios.get("https://json-server-api-vcou.onrender.com/registered")
             .then(res => {
                 setDonors(res.data);
                 // Calculate the number of available donors

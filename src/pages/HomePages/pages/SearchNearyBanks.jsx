@@ -42,7 +42,7 @@ const SearchNearyBanks = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/banks');
+                const response = await fetch('https://json-server-api-vcou.onrender.com/banks');
                 const data = await response.json();
                 setBanks(data);
             } catch (error) {

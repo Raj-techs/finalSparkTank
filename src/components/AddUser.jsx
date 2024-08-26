@@ -23,7 +23,7 @@ const AddUser = (props) => {
         console.log(userData);
         try {
             
-            await axios.post('http://localhost:3000/users', userData); // Replace with your JSON Server endpoint
+            await axios.post('https://json-server-api-vcou.onrender.com/users', userData); // Replace with your JSON Server endpoint
             setUserData({
                 name: '',
                 group: '',

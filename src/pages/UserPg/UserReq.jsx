@@ -77,7 +77,7 @@ const UserReq = () => {
     const requestData = { ...reqData, certificates: uploadedImages };
 
     try {
-      await axios.post('http://localhost:3000/requests', requestData);
+      await axios.post('https://json-server-api-vcou.onrender.com/requests', requestData);
       toast.success("👍 Requested Successfully");
     } catch (error) {
       console.error('Error adding user:', error);

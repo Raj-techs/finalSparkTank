@@ -6,9 +6,9 @@ import Details from '../../components/Gov/DetailsGov';
 import DetailsGov from '../../components/Gov/DetailsGov';
 import Transfer from '../../components/Gov/Transfer';
 import Rejected from '../../components/Gov/Rejected';
-import NavGov from '../../components/Gov/NavGov';
 import TotalBanks from '../../components/Gov/TotalBanks';
 import Loading from '../../components/Loading';
+import Navbar from './GovNav'
 
 const GovstaticPg = () => {
     const [showDashboard, setshowDashboard] = useState(true);
@@ -42,24 +42,7 @@ const GovstaticPg = () => {
 
   return (
     <>
-      <div className="nav">
-        <div className="logo"><h1>Government</h1></div>
-        <div className="opts">
-            <ul>
-                <Link to='/'><li>Home</li></Link>
-                <li>About</li>
-                <li>Services</li>
-                <li>Blog</li>
-                <li>Blood</li>
-            </ul>
-        </div>
-        <div className="more">
-            <ul>
-                <h5>Login</h5>
-                <h5>SignUp</h5>
-            </ul>
-        </div>
-      </div>
+      <Navbar/>
 
 
       <div className="content">

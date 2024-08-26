@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('http://localhost:3000/registered');
+      const response = await axios.get('https://json-server-api-vcou.onrender.com/registered');
       const user = response.data.find(
         user => user.email === formData.email && user.password === formData.password
       );

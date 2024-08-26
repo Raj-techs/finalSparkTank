@@ -18,7 +18,7 @@ const Status = () => {
         // Fetch user details from API
         const fetchUserDetails = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/registered', {
+                const response = await axios.get('https://json-server-api-vcou.onrender.com/registered', {
                     params: {
                         email: email
                     }
@@ -63,7 +63,7 @@ const Status = () => {
     const toggleDonar = async (item) => {
         const updatedDonar = item.donar === 'Yes' ? 'No' : 'Yes';
 
-        await axios.put(`http://localhost:3000/registered/${item.id}`, {
+        await axios.put(`https://json-server-api-vcou.onrender.com/registered/${item.id}`, {
             ...item,
             donar: updatedDonar,
         });
@@ -135,7 +135,7 @@ const Status = () => {
                     {userDetails && (
                         <div className="total-status" style={{display:"flex",width:"90%",justifyContent:"space-between",height:"600px",alignItems:"center",marginTop:"20px",}}>
                             <h1 style={{padding:"10px 20px",background:"red",color:"white",borderRadius:"20px",fontSize:"1.8em",marginLeft:"90px"}}>Total Donations: 6</h1>
-                            <div style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid black", borderRadius: "30px" }}><p>Ready to Donate</p>  <button
+                            <div style={{ display: "flex", alignItems: "center", padding: "8px", border: "1px solid black", borderRadius: "30px" }}><p>Willing to  Donate</p>  <button
                                 className={`flex items-center justify-between w-24 p-2 rounded-full transition-colors 
             ${userDetails.donar === 'Yes' ? 'bg-red-500' : 'bg-gray-300'}`}
                                 onClick={() => toggleDonar(userDetails)}
@@ -210,34 +210,54 @@ const Status = () => {
 
                     </table>
                 </div>
-                <div className="donated">
-                    <div className="donated-head">
-                        <h2 style={{ fontWeight: "bolder", fontSize: "1.8em", textAlign: "center" }}> My Donations :</h2>
-                        <h2 style={{ fontWeight: "bolder", fontSize: "1.3em", textAlign: "center" }}>Total Donations : <span className='no-design'>3</span></h2>
-                    </div>
-                    <div className="donated-divs">
-                        <div className="donated-div">
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", top: "75px" }}> <h2>DHARANI BLOOD</h2>
-                                <h3>BANK</h3>
-                            </div>
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", bottom: "25px" }}><p> Location : Tanuku</p>
-                                <p> Date : 2/6/2024</p>
-                            </div>
-                        </div>
-                        <div className="donated-div">
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", top: "75px" }}> <h2>CHIRANJIVI BLOOD</h2>
-                                <h3>BANK</h3></div>
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", bottom: "25px" }}><p> Location : Tanuku</p>
-                                <p> Date : 2/6/2024</p></div>
-                        </div>
-                        <div className="donated-div">
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", top: "75px" }}> <h2>ASR BLOOD</h2>
-                                <h3>BANK</h3></div>
-                            <div style={{ position: "absolute", color: "black", fontWeight: "bolder", bottom: "25px" }}><p> Location : Tanuku</p>
-                                <p> Date : 2/6/2024</p></div>
-                        </div>
-                    </div>
-                </div>
+                <div className="donated container mx-auto p-5 rounded-lg mt-8 bg-red-200 bg-opacity-40 backdrop-blur-md">
+  <div className="donated-head text-center mb-8">
+    <h2 className="font-bold text-2xl">My Donations:</h2>
+    <h2 className="font-bold text-lg mt-2">Total Donations: <span className="no-design inline-block bg-red-600 text-white rounded-full px-3 py-1">3</span></h2>
+  </div>
+  <div className="donated-divs grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="donated-div relative overflow-hidden bg-cover bg-center h-72 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105" style={{ backgroundImage: "url('https://content.jdmagicbox.com/comp/hyderabad/85/040p7315985/catalogue/red-cross-blood-bank-vidya-nagar-hyderabad-blood-banks-z9vkxpbue8.jpg')" }}>
+      <div className="overlay absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <div className="font-bold mt-4">
+          <h2>DHARANI BLOOD</h2>
+          <h3>BANK</h3>
+        </div>
+        <div className="font-bold mb-4">
+          <p>Location: Tanuku</p>
+          <p>Date: 2/6/2024</p>
+        </div>
+      </div>
+    </div>
+    <div className="donated-div relative overflow-hidden bg-cover bg-center h-72 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105" style={{ backgroundImage: "url('https://anandrishijihospital.com/wp-content/uploads/2024/01/IMG-20231226-WA0006-1024x687.jpg')" }}>
+      <div className="overlay absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <div className="font-bold mt-4">
+          <h2>CHIRANJIVI BLOOD</h2>
+          <h3>BANK</h3>
+        </div>
+        <div className="font-bold mb-4">
+          <p>Location: Tanuku</p>
+          <p>Date: 2/6/2024</p>
+        </div>
+      </div>
+    </div>
+    <div className="donated-div relative overflow-hidden bg-cover bg-center h-42 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105" style={{ backgroundImage: "url('https://assets.thehansindia.com/h-upload/2020/05/02/966166-vijayasri-blood-banks.webp')" }}>
+      <div className="overlay absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
+      <div className="relative z-10 flex flex-col justify-between h-full">
+        <div className="font-bold mt-4">
+          <h2>ASR BLOOD</h2>
+          <h3>BANK</h3>
+        </div>
+        <div className="font-bold mb-4">
+          <p>Location: Tanuku</p>
+          <p>Date: 2/6/2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
                 <div className="msgs">
                     Donating blood is a simple yet powerful way to make a difference in the world. Each donation can save multiple lives, providing critical support to those in need during emergencies, surgeries, and treatments for various medical conditions. The process is safe, quick, and immensely rewarding, knowing that your contribution could be a lifeline for someone else.
                 </div>

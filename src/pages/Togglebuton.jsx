@@ -6,7 +6,7 @@ const DonarToggle = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:3000/users'); // Update with your API endpoint
+      const response = await axios.get('https://json-server-api-vcou.onrender.com/users'); // Update with your API endpoint
       setData(response.data);
     };
     fetchData();
@@ -15,7 +15,7 @@ const DonarToggle = () => {
   const toggleDonar = async (item) => {
     const updatedDonar = item.donar === 'on' ? 'off' : 'on';
 
-    await axios.put(`http://localhost:3000/users/${item.id}`, {
+    await axios.put(`https://json-server-api-vcou.onrender.com/users/${item.id}`, {
       ...item,
       donar: updatedDonar,
     });

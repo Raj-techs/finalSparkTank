@@ -46,7 +46,7 @@ const SearchDonar = () => {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:3000/registered')
+        axios.get('https://json-server-api-vcou.onrender.com/registered')
             .then(response => {
                 setApiData(response.data);
                 setLoading(false);

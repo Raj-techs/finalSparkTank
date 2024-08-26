@@ -23,7 +23,7 @@ const Groups = (props) => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/users');
+                const response = await axios.get('https://json-server-api-vcou.onrender.com/users');
                 setUsers(response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);

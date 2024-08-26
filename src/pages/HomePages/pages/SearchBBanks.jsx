@@ -9,7 +9,7 @@ const SearchBBanks = () => {
     const [allocatedData, setAllocatedData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:3000/banks')
+        axios.get('https://json-server-api-vcou.onrender.com/banks')
             .then(response => {
                 setAllocatedData(response.data);
                 setLoading(false);

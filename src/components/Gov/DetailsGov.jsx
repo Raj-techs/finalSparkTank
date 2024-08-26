@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
+
 import axios from 'axios';
 
 const DetailsGov = () => {
@@ -10,7 +13,7 @@ const DetailsGov = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/requests");
+                const res = await axios.get("https://json-server-api-vcou.onrender.com/requests");
                 setReqData(res.data);
             } catch (error) {
                 console.error("Error fetching data", error);
@@ -152,19 +155,22 @@ const NeedAllocate = (props) => {
 
     const [bankNameToTransfer, setBankNameToTransfer] = useState("");
     const [cityNameToGet, setCityNameToGet] = useState("");
+    
     const defaultDate = new Date().toISOString().slice(0, 10);
-
+    
     const handleAllocate = async (bank) => {
         if (!props.reqUser || !props.reqUser.units) {
             console.error("Error: reqUser is missing or does not contain 'units'");
             return;
         }
-
+    
         try {
             const data = {
                 fromBank: bank.bankName,
                 fromLocation: bank.location,
                 fromCity: bank.city,
+                fromUsername: props.reqUser.username,
+                userLocation: props.reqUser.usrlocation,
                 group: props.reqUser.group,
                 units: props.reqUser.units,
                 transferToBankName: bankNameToTransfer,
@@ -173,19 +179,28 @@ const NeedAllocate = (props) => {
                 date: defaultDate
             };
             console.log(data);
-
-            await axios.post('http://localhost:3000/allocated', data);
-            alert('Blood allocated successfully!');
+    
+            await axios.post('https://json-server-api-vcou.onrender.com/allocated', data);
+    
+            // Show SweetAlert2 on success
+            Swal.fire({
+                title: 'Success!',
+                text: 'Blood allocated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
         } catch (error) {
             console.error("Error allocating data", error);
         }
     };
-
+    
+   
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const banks = await axios.get("http://localhost:3000/banks");
-                const users = await axios.get("http://localhost:3000/users");
+                const banks = await axios.get("https://json-server-api-vcou.onrender.com/banks");
+                const users = await axios.get("https://json-server-api-vcou.onrender.com/users");
                 setBanksData(banks.data);
                 setUsersData(users.data);
             } catch (error) {
@@ -227,10 +242,7 @@ const NeedAllocate = (props) => {
             <div style={{ position: "relative", display: "flex", justifyContent: 'center', gap: "90px", alignItems: "center", flexDirection: "column" }}>
                 <div className="allocate">
                     <b>Need to : <i>Undrajavaram, U Mandal, East Godavari District, Andhra Pradesh</i></b><br />
-                    <div style={{ display: "flex", justifyContent: "center", gap: "30px", marginBottom: "50px" }}>
-                        <input type="text" style={{ border: "2px solid black" }} placeholder='Search for City' onChange={e => setCityNameToGet(e.target.value)} />
-                        <p>To Bank : <input type="text" style={{ border: "2px solid black" }} placeholder='Enter Bank Name to Transfer' onChange={e => setBankNameToTransfer(e.target.value)} /></p>
-                    </div>
+                   
                 </div>
                 <div className="allocate">
                     <div style={{ display: "flex", justifyContent: "center", gap: "30px", marginBottom: "50px" }}>
@@ -276,7 +288,7 @@ const NeedAllocate = (props) => {
                                     <td>{groupCounts['AB-']}</td>
                                     <td>{bank.units}</td>
                                     <td>
-                                        <button onClick={() => handleAllocate(bank)}>Allocate</button>
+                                        <button onClick={() => {handleAllocate(bank)}}>Allocate</button>
                                     </td>
                                 </tr>
                             );

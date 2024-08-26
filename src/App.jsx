@@ -25,6 +25,7 @@ import SearchNearyBanks from './pages/HomePages/pages/SearchNearyBanks';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DonarToggle from './pages/Togglebuton';
+import TransferUserDetails from './pages/TransferUserDetails';
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
           <Route path='/user/req' element={<UserReq />} />
           <Route path='/admin/register' element={<BloodBankRegister />} />
           <Route path='/admin/login' element={<BloodBankLogin />} />
+          <Route path="/admin/transferuserdetails/:id" element={<TransferUserDetails />} />
 
 
 

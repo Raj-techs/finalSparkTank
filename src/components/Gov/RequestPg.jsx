@@ -4,7 +4,7 @@ import axios from 'axios'
 const RequestPg = () => {
     const [requests,setRequests]=useState([])
     useEffect(_=>{
-        axios.get("http://localhost:3000/requests").then(res=>setRequests(res.data))
+        axios.get("https://json-server-api-vcou.onrender.com/requests").then(res=>setRequests(res.data))
     })
     return (
         <>

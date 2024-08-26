@@ -22,7 +22,7 @@ const Login = () => {
         e.preventDefault();
         try {
             
-            const response = await axios.get(`http://localhost:3000/banks?bankName=${getbankName}&password=${password}`);
+            const response = await axios.get(`https://json-server-api-vcou.onrender.com/banks?bankName=${getbankName}&password=${password}`);
             const allbanks = response.data;
             
             if (allbanks.length > 0) {

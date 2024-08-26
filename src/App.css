@@ -66,6 +66,33 @@ nav button {
   margin-bottom: 20px;
 }
 
+/* Add these custom styles for the dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+/* Ensure you have these classes in your Tailwind CSS config if needed */
+.bg-gray-200 {
+  background-color: #e2e8f0;
+}
+
+.bg-gray-400 {
+  background-color: #cbd5e0;
+}
+
+.whitespace-no-wrap {
+  white-space: nowrap;
+}
+
+
 /* CONTENT SECTION */
 .content {
   height: 80vh;
@@ -713,7 +740,7 @@ h1 {
 
 /* TRANFER */
 .transfer {
-  height: 40vh;
+  height: 10vh;
   width: 95%;
   /* background: #333; */
   position: relative;
@@ -722,12 +749,12 @@ h1 {
   flex-direction: column;
   align-items: center;
   z-index: -10;
-  margin-bottom: 140px;
+  margin-top: 210px;
 }
 
 .transfer-anim {
   position: relative;
-  bottom: -200px;
+  bottom: 120px;
   width: 95%;
   height: 20vh;
   display: flex;
@@ -803,9 +830,10 @@ h1 {
 .transfer .transfer-divs .transfer-div {
   padding: 20px;
   width: 30%;
-  height: 200px;
+  height: 320px;
   border-radius: 10px;
   box-shadow: 0px 10px 20px black;
+
 }
 
 .transfer .transfer-divs .transfer-div p {
@@ -1290,7 +1318,7 @@ i.fa-solid.fa-user {
 
 .allocate {
   position: relative;
-  height: 9vh;
+  height: 1vh;
 
   text-align: center;
   /* display: flex; */

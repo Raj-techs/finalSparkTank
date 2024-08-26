@@ -9,7 +9,7 @@ const Update = (props) => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/users');
+                const response = await axios.get('https://json-server-api-vcou.onrender.com/users');
                 setUsers(response.data);
             } catch (error) {
                 console.error('Error fetching users:', error);
@@ -86,7 +86,7 @@ const Update = (props) => {
         }
 
         try {
-            await axios.put(`http://localhost:3000/users/${id}`, rest);
+            await axios.put(`https://json-server-api-vcou.onrender.com/users/${id}`, rest);
             alert('User updated successfully!');
         } catch (error) {
             console.error('Error updating user:', error);

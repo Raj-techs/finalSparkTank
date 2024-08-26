@@ -86,69 +86,97 @@ const Register = () => {
     };
 
     const handleSubmit = async (e) => {
-      e.preventDefault();
-      
-      const emptyFields = Object.values(formData).some(field => field === "");
-      if (emptyFields) {
-          toast.error("Please fill in all details!");
-          return;
-      }
-  
-      if (!validateMobileNumber(formData.mobileNo)) {
-          setErrors({ mobileNo: "Please enter a valid 10-digit mobile number" });
-          return;
-      }
-  
-      console.log("Submitting Form Data:", formData); // Check form data
-  
-      try {
-          const res = await fetch("http://localhost:3000/registered", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify(formData),
-          });
-  
-          const data = await res.json();
-  
-          if (!res.ok) {
-              throw new Error(data.message || errors);
-          }
-  
-          console.log(data);
-  
-          setFormData({
-              username: "",
-              email: "",
-              password: "",
-              age: "",
-              gender: "",
-              group: "",
-              fathername: "",
-              mothername: "",
-              mobileNo: "",
-              state: "",
-              district: "",
-              city: "",
-              address: "",
-              pincode: "",
-          });
-  
-          toast.success("User registered successfully! 😊");
-          navigate("/login");
-      } catch (error) {
-          toast.error("❌ User registration Failed");
-          if (error.message.includes("Mobile number already exists")) {
-              setErrors({
-                  mobileNo: "Mobile number already exists, please use another number",
-              });
-          } else {
-              alert(error.message);
-          }
-          console.error("Error:", error);
-      }
-  };
+        e.preventDefault();
+        
+        const emptyFields = Object.values(formData).some(field => field === "");
+        if (emptyFields) {
+            toast.error("Please fill in all details!");
+            return;
+        }
+    
+        if (!validateMobileNumber(formData.mobileNo)) {
+            setErrors({ mobileNo: "Please enter a valid 10-digit mobile number" });
+            return;
+        }
+    
+        const dataToSubmit = {
+            ...formData,
+            profileImage: uploadedImage, // Include the uploaded image URL
+        };
+    
+        try {
+            const res = await fetch("https://json-server-api-vcou.onrender.com/registered", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(dataToSubmit),
+            });
+    
+            const data = await res.json();
+    
+            if (!res.ok) {
+                throw new Error(data.message || errors);
+            }
+    
+            setFormData({
+                username: "",
+                email: "",
+                password: "",
+                age: "",
+                gender: "",
+                group: "",
+                fathername: "",
+                mothername: "",
+                mobileNo: "",
+                state: "",
+                district: "",
+                city: "",
+                address: "",
+                pincode: "",
+            });
+            setUploadedImage(""); // Clear the uploaded image URL
+    
+            toast.success("User registered successfully! 😊");
+            navigate("/login");
+        } catch (error) {
+            toast.error("❌ User registration Failed");
+            if (error.message.includes("Mobile number already exists")) {
+                setErrors({
+                    mobileNo: "Mobile number already exists, please use another number",
+                });
+            } else {
+                alert(error.message);
+            }
+            console.error("Error:", error);
+        }
+    };
+    
+  const [uploadedImage, setUploadedImage] = useState(""); // State to store uploaded image URL
+
+const handleFileUpload = async (e) => {
+    const file = e.target.files[0]; // Assuming single file upload
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "my_upload_preset");
+
+    try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/duo7jqmit/image/upload`, {
+            method: "POST",
+            body: formData,
+        });
+
+        const data = await res.json();
+        setUploadedImage(data.secure_url); // Store the URL in state
+        toast.success("Image uploaded successfully! 😊");
+    } catch (error) {
+        console.error("Error uploading file:", error);
+        toast.error("❌ Image upload failed");
+    }
+};
+
 
     return (
         <>
@@ -327,6 +355,16 @@ const Register = () => {
                             className="bg-gray-200 rounded-lg p-3 w-full"
                         />
                     </div>
+                    <div>
+    <label htmlFor="profileImage" className="block text-left mb-1">Profile Image</label>
+    <input
+        type="file"
+        id="profileImage"
+        onChange={handleFileUpload}
+        className="bg-gray-200 rounded-lg p-3 w-full"
+    />
+</div>
+
                     <div className="col-span-full flex gap-5 justify-center">
                         <button type="submit" className="bg-red-500 w-[500px]  text-white rounded-lg p-3">Sign Up</button>
                         <Link to="/login" className="underline text-blue-500">Already have an account? Login</Link>

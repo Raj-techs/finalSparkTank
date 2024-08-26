@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
-import Nav from '../../components/Nav';
+import NavbarUser from './NavbarUser'
 import { Link, useNavigate } from 'react-router-dom';
 import Status from '../../components/User/Status';
 import axios from 'axios';
 import logoImage from "../../assests/bloodrop.png";
 import PropTypes from "prop-types";
 import Loading from '../../components/Loading';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-solid-svg-icons';
 
 const UserStaticPg = ({
   bloodBankRef,
@@ -22,7 +24,7 @@ const UserStaticPg = ({
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/registered');
+        const response = await axios.get('https://json-server-api-vcou.onrender.com/registered');
         setData(response.data);
       } catch (error) {
         console.error(error);
@@ -54,24 +56,10 @@ const UserStaticPg = ({
   if (loading) {
     return <Loading />;
   }
-
+  
   return (
     <>
-      <nav className="body-font bg-red-800 text-white h-20 ">
-        <div className="flex title-font font-medium items-center text-white mb-4 md:mb-0 navbar">
-          <img src={logoImage} alt="Bloodrop Logo" className="w-10 h-10 p-2 bg-white rounded-full" />
-          <span className="ml-3 text-xl">BLOODROP</span>
-        </div>
-        <nav className="opts ">
-          <Link to='/user/home'>
-            <span className="mr-5 hover:text-gray-900  " >HOME</span>
-          </Link>
-          <button onClick={() => scrollToSection(searchBloodBankRef)} className="mr-5 mb-12 hover:text-gray-900">Search Blood Bank</button>
-          <button onClick={() => scrollToSection(searchVoluntaryDonorsRef)} className="mr-5 mb-12 hover:text-gray-900">Search Voluntary Donors</button>
-          <button onClick={() => scrollToSection(findNearBloodBanksRef)} className="mr-5 mb-12 hover:text-gray-900">Find Near Blood Banks</button>
-          <button onClick={handleSignOut} className="mr-5 hover:text-gray-900 mb-12">Sign Out</button>
-        </nav>
-      </nav>
+       <NavbarUser/>
       <Status loggedInUserMobile={data} />
     </>
   );

@@ -7,7 +7,7 @@ const Transfer = () => {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const res = await axios.get("http://localhost:3000/allocated");
+            const res = await axios.get("https://json-server-api-vcou.onrender.com/allocated");
             setallocateData(res.data);
         } catch (error) {
             console.error("Error fetching data", error);
@@ -40,7 +40,7 @@ const Transfer = () => {
               return(<tr>
                 <td>{item.fromBank}</td>
                 <td>{item.fromCity}</td>
-                <td>{item.transferToBankName}</td>
+                <td>{item.fromUsername}</td>
                 <td>{item.transferCity}</td>
                 <td>{item.group}</td>
                 <td>{item.units}</td>

@@ -10,7 +10,7 @@ const Details = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get("http://localhost:3000/users");
+                const res = await axios.get("https://json-server-api-vcou.onrender.com/users");
                 setuserData(res.data);
             } catch (error) {
                 console.error("Error fetching data", error);

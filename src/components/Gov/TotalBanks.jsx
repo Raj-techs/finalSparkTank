@@ -14,9 +14,9 @@ const TotalBanks = () => {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [filterAvailBankss, setFilterAvailBankss] = useState(banks);
     useEffect(_=>{
-        axios.get("http://localhost:3000/banks").then(res=>setbanks(res.data))
+        axios.get("https://json-server-api-vcou.onrender.com/banks").then(res=>setbanks(res.data))
         console.log(banks);
-        axios.get('http://localhost:3000/users')
+        axios.get('https://json-server-api-vcou.onrender.com/users')
       .then(response => {
         setUsers(response.data);
       })

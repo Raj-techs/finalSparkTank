@@ -124,7 +124,7 @@ const BloodBankRegister = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/banks", {
+      const res = await fetch("https://json-server-api-vcou.onrender.com/banks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
