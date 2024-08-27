@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9282c1b5.css",
+    "main.js": "/static/js/main.5deb4bea.js",
+    "static/js/453.dd53e008.chunk.js": "/static/js/453.dd53e008.chunk.js",
+    "static/media/giphy.gif": "/static/media/giphy.1ca1936e378466bab9d5.gif",
+    "static/media/blood-anime.mp4": "/static/media/blood-anime.210ba5eb73bf4f9b2a81.mp4",
+    "static/media/hospital-2.png": "/static/media/hospital-2.f7787b67f1e3c3b5353e.png",
+    "static/media/ambulance.gif": "/static/media/ambulance.4e89205ad47cfc9d3e4c.gif",
+    "static/media/track.jpg": "/static/media/track.888dcea2be627cee6251.jpg",
+    "static/media/b-drop.png": "/static/media/b-drop.e25a1a4dc20cda61c515.png",
+    "static/media/blood-poster-5.jpg": "/static/media/blood-poster-5.34a94be0346f21c25acd.jpg",
+    "static/media/hospital-1.png": "/static/media/hospital-1.84fdb7bd9d83127a24f9.png",
+    "static/media/bloodunit.jpg": "/static/media/bloodunit.6cca3c9c4092e0d13005.jpg",
+    "static/media/bg-3.jpg": "/static/media/bg-3.b0326e830bef3ddb97e1.jpg",
+    "static/media/MOHF.png": "/static/media/MOHF.504796b28389a2433b9d.png",
+    "static/media/logo_nhp_back.png": "/static/media/logo_nhp_back.c84270ea3df4a074618e.png",
+    "static/media/bb.jpg": "/static/media/bb.d5361a7d6d996bbec217.jpg",
+    "static/media/india-gov.png": "/static/media/india-gov.efaf2dce57079433c968.png",
+    "index.html": "/index.html",
+    "main.9282c1b5.css.map": "/static/css/main.9282c1b5.css.map",
+    "main.5deb4bea.js.map": "/static/js/main.5deb4bea.js.map",
+    "453.dd53e008.chunk.js.map": "/static/js/453.dd53e008.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9282c1b5.css",
+    "static/js/main.5deb4bea.js"
+  ]
+}
