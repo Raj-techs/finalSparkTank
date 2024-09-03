@@ -46,11 +46,19 @@
 // export default HeroSection;
 
 
-import React from "react";
+import React, { useState } from "react";
 import heroVideo from "../../../assests/blood-anime.mp4"; // Path to your video file
 import backgroundImage from "../../../assests/bg-3.jpg"; // Path to your background image
+import { Link } from "react-router-dom";
+// import '../../../App.css'
 
 const HeroSection = () => {
+  const [showOptions, setShowOptions] = useState(false);
+
+  // Function to toggle the options
+  const toggleOptions = () => {
+    setShowOptions(!showOptions);
+  };
   return (
     <div
       className="bg-cover bg-center"
@@ -66,13 +74,31 @@ const HeroSection = () => {
               Your blood donation can be the lifeline someone needs. Join us in our mission to provide safe and reliable blood to those in need. Every drop counts and can make a world of difference.
             </p>
             <div className="flex justify-center">
+              <Link to='/login'>
               <button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
                 Donate Now
-              </button>
+              </button></Link>
               <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
                 Learn More
               </button>
             </div>
+             {/* Button */}
+      <button
+        className="block lg:hidden ml-4 mt-9  inline-flex text-white bg-red-500 border-1 py-3 px-20 focus:outline-none hover:bg-gray-200 rounded text-lg "
+        onClick={toggleOptions}
+      >
+        Services
+      </button>
+
+      {/* Options that appear below the button */}
+      {showOptions && (
+        <div className="mt-2 bg-white shadow-md rounded-lg p-4 space-y-2">
+          <Link to='/search-b-banks'><button className="w-full text-left px-4 py-2 hover:bg-gray-200 rounded">Search Blood Bank </button></Link>
+          
+          <Link to='/search-donars'><button className="w-full text-left px-4 py-2 hover:bg-gray-200 rounded">Search Voluntary Donors</button></Link>
+          <Link to='/search-near-banks'><button className="w-full text-left px-4 py-2 hover:bg-gray-200 rounded">Find Near Blood Banks</button></Link>
+        </div>
+      )}
           </div>
           <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
             <video
