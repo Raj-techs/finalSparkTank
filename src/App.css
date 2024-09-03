@@ -1684,8 +1684,8 @@ table .gov-req-head.small {
   }
   .family-details{
     position: absolute;
-    top: 2100px;
-  
+    top: 1900px;
+  left: -20px;
     width: 60%;
   }
   .family-details table{
@@ -1727,7 +1727,7 @@ table .gov-req-head.small {
   }
   .msgs{
     position: relative;
-    top:860px;
+    top:1560px;
     line-break: 3;
     left: -10px;
     /* display: -webkit-box; */
@@ -1788,6 +1788,11 @@ table .gov-req-head.small {
   .my-status div{
     min-width: 200px;
   }
+  .container.hhh{
+    position: relative;
+    left: 60px;
+  }
+  
   /* .my-status{
     display: flex;
     width: 200px;
@@ -1847,6 +1852,12 @@ table .gov-req-head.small {
     left: -40px;
     top: 8px;
   }
+  .sittingimg{
+    display: none;
+  }
+  .mapshomepg {
+    display: none;
+  }
 }
   
   
@@ -1874,5 +1885,13 @@ table .gov-req-head.small {
       height: 20%;
       width: 85%;
       left: 10px;
+  }
+  
+}
+@media only screen and (max-width: 600px) {
+  .container.hhh h2 {
+      position: relative;
+      max-width: 290%;
+      top: 1420px;
   }
 }

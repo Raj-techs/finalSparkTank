@@ -144,8 +144,8 @@ const StepsSection = () => {
                 </div>
               </div>
             </div>
-            <img
-              className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12"
+            <img 
+              className="sittingimg lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12"
               src={stepImage}
               alt="step"
             />

@@ -56,7 +56,7 @@ const StatisticSection = () => {
                 <p className="leading-relaxed">Donars</p>
               </div>
             </div>
-            <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div className=" hidden sm:block p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
                 <svg
                   fill="none"
@@ -76,7 +76,7 @@ const StatisticSection = () => {
                 <p className="leading-relaxed">Files</p>
               </div>
             </div>
-            <div className="p-4 md:w-1/4 sm:w-1/2 w-full">
+            <div className="hidden sm:block  p-4 md:w-1/4 sm:w-1/2 w-full">
               <div className="border-2 border-gray-200 px-4 py-6 rounded-lg">
                 <svg
                   fill="none"

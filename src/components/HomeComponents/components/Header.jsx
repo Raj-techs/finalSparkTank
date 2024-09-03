@@ -190,7 +190,8 @@ const Header = ({
             ABOUT US
           </a>
         </nav></div>
-        <button className="inline-flex items-center bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
+       <Link to='/about'>
+       <button className="inline-flex items-center bg-black border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
           Know More
           <svg
             fill="none"
@@ -204,6 +205,7 @@ const Header = ({
             <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </button>
+       </Link>
       {/* </div> */}
     </nav>
   );

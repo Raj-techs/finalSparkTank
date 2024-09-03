@@ -99,7 +99,8 @@ const Status = () => {
                                     <h2 style={{ fontWeight: "bolder", fontSize: "1.5em", position: "absolute", top: "-50px", textAlign: "center", width: "430px" }}>My Status</h2>
                                     <tr>
                                         <th>Blood Account Id :</th>
-                                        <td>{generateRandomString()}</td>
+                                        {/* <td>{generateRandomString()}</td> */}
+                                        <td>USR95638</td>
                                     </tr>
                                     <tr>
                                         <th>Donar Name :</th>
@@ -152,8 +153,8 @@ const Status = () => {
                     )}
                 </div>
 
-                <h2 style={{ fontWeight: "bolder", fontSize: "2em" }} className='familydetails'>Family Details</h2>
-                <div className='family-details' style={{ height: "60vh", width: "100%",overflowX:"scroll" }}>
+                <h2 style={{ fontWeight: "bolder", fontSize: "2em" }} className='familydetails '>Family Details</h2>
+                <div className='family-details' style={{ height: "60vh", width: "100%", overflowX: "scroll" }}>
                     <table >
                         <tr className='gov-req-head'>
                             <th>Member Type </th>
@@ -214,25 +215,26 @@ const Status = () => {
                 </div>
                 <div className="donated  container mx-auto p-5 rounded-lg mt-8 bg-red-200 bg-opacity-40 backdrop-blur-md">
                     <div className="donated-head text-center mb-8">
-                    <h2 className="myydontions hidden font-bold text-xl md:block">My Donations:</h2>
-<h2 className="font-bold text-2xl mt-2  md:text-xl">
-  Total Donations:{" "}
-  <span className="no-design inline-block bg-red-600 text-white rounded-full px-3 py-1">
-    3
-  </span>
-</h2>
+                        <h2 className="myydontions hidden font-bold text-xl md:block">My Donations:</h2>
+                        <h2 className="font-bold text-2xl mt-2  md:text-xl">
+                            Total Donations:{" "}
+                            <span className="no-design inline-block bg-red-600 text-white rounded-full px-3 py-1">
+                                3
+                            </span>
+                        </h2>
 
                     </div>
 
                     {/* Non-scrollable divs for desktop view */}
                     <div className="hidden lg:grid lg:grid-cols-1 lg:md:grid-cols-2 lg:lg:grid-cols-3 lg:gap-6">
                         {/* Donation 1 */}
+                        <Link to='/bank-donations'>
                         <div
                             className="donated-div relative overflow-hidden bg-cover bg-center h-60 md:h-72 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105"
                             style={{
                                 backgroundImage:
                                     "url('https://content.jdmagicbox.com/comp/hyderabad/85/040p7315985/catalogue/red-cross-blood-bank-vidya-nagar-hyderabad-blood-banks-z9vkxpbue8.jpg')",
-                            }}
+                                }}
                         >
                             <div className="overlay absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
                             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -246,8 +248,11 @@ const Status = () => {
                                 </div>
                             </div>
                         </div>
+                        </Link>
 
                         {/* Donation 2 */}
+                        <Link to='/bank-donations'>
+
                         <div
                             className="donated-div relative overflow-hidden bg-cover bg-center h-60 md:h-72 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105"
                             style={{
@@ -267,8 +272,11 @@ const Status = () => {
                                 </div>
                             </div>
                         </div>
+                        </Link>
 
                         {/* Donation 3 */}
+                        <Link to='/bank-donations'>
+
                         <div
                             className="donated-div relative overflow-hidden bg-cover bg-center h-60 md:h-72 rounded-lg text-white flex flex-col justify-between p-4 transform transition-transform duration-300 hover:scale-105"
                             style={{
@@ -288,9 +296,12 @@ const Status = () => {
                                 </div>
                             </div>
                         </div>
+                    </Link>
                     </div>
 
+
                     {/* Mobile scrolling div */}
+
                     <div className="lg:hidden flex overflow-x-auto gap-6 mt-4 scrollingdonations">
                         {/* Donation 1 */}
                         <div
@@ -298,7 +309,7 @@ const Status = () => {
                             style={{
                                 backgroundImage:
                                     "url('https://content.jdmagicbox.com/comp/hyderabad/85/040p7315985/catalogue/red-cross-blood-bank-vidya-nagar-hyderabad-blood-banks-z9vkxpbue8.jpg')",
-                            }}
+                                }}
                         >
                             <div className="overlay absolute inset-0 bg-black bg-opacity-50 rounded-lg"></div>
                             <div className="relative z-10 flex flex-col justify-between h-full">
@@ -306,10 +317,12 @@ const Status = () => {
                                     <h2>DHARANI BLOOD</h2>
                                     <h3>BANK</h3>
                                 </div>
-                                <div className="font-bold text-xs md:text-base mb-4">
+                                <Link to='/bank-donations'>
+                                <div className="font-bold z-40 text-xs md:text-base mb-4">
                                     <p>Location: Tanuku</p>
                                     <p>Date: 2/6/2024</p>
                                 </div>
+                                    </Link>
                             </div>
                         </div>
 
@@ -364,6 +377,7 @@ const Status = () => {
                 <div className="fooooter">
                     <Footer />
                 </div>
+
             </div>}
 
         </>

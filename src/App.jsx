@@ -28,6 +28,8 @@ import DonarToggle from './pages/Togglebuton';
 import TransferUserDetails from './pages/TransferUserDetails';
 import NavTest from './pages/NavigationBar';
 import NavigationBar from './pages/NavigationBar';
+import LearnMore from './components/HomeComponents/components/LearnMore';
+import BankDonations from './components/User/BankDonations';
 
 
 const App = () => {
@@ -36,6 +38,8 @@ const App = () => {
       <BankProvider>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/learn-more' element={<LearnMore />} />
+          <Route path='/bank-donations' element={<BankDonations />} />
           <Route path="/search-donars" element={<SearchDonar />} />
           <Route path="/search-b-banks" element={<SearchBBanks />} />
           <Route path="/search-near-banks" element={<SearchNearyBanks />} />

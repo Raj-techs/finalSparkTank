@@ -108,7 +108,7 @@ const Navbar = ({ scrollToSection, searchBloodBankRef, searchVoluntaryDonorsRef,
 
   return (
     <>
-      <nav className="body-font bg-red-800 text-white h-20 flex items-center justify-between px-4">
+      <nav className="body-font w-[460px] sm:w-full  bg-red-800 w-full  text-white h-20 flex items-center justify-between px-4">
       <div className="flex items-center">
         <img src={logoImage} alt="Bloodrop Logo" className="w-10 h-10 p-2 bg-white rounded-full" />
         {!isSmallScreen && <span className="ml-3 text-xl">BLOODROP</span>}
@@ -118,9 +118,9 @@ const Navbar = ({ scrollToSection, searchBloodBankRef, searchVoluntaryDonorsRef,
         // Mobile View
         <div className="flex items-center">
           <Typography variant="h6" className="ml-3">{localStorage.getItem('username')}</Typography>
-          <Button onClick={toggleDrawer(true)} className="text-white">
+          <Link to='/'><Button onClick={toggleDrawer(true)} className="text-white">
             <FontAwesomeIcon icon={faBars} size="lg" />
-          </Button>
+          </Button></Link>
         </div>
       ) : (
         // Desktop View
@@ -150,6 +150,7 @@ const Navbar = ({ scrollToSection, searchBloodBankRef, searchVoluntaryDonorsRef,
           <button onClick={toggleSidebar} className="hover:text-red-400 ml-6  mt-3 focus:outline-none">
             <FontAwesomeIcon icon={faBell} size="lg" />
           </button>
+          
         </div>
       )}
     </nav>

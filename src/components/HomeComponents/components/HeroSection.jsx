@@ -78,9 +78,10 @@ const HeroSection = () => {
               <button className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">
                 Donate Now
               </button></Link>
+              <Link to='/learn-more'>
               <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
                 Learn More
-              </button>
+              </button></Link>
             </div>
              {/* Button */}
       <button

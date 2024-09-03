@@ -123,7 +123,7 @@ const UserReq = () => {
         </div></Link>
 
         {/* 3-bar menu icon (visible on mobile view) */}
-        <div className="block md:hidden">
+        {/* <div className="block md:hidden">
           <button
             onClick={toggleServicesDropdown}
             className="text-white focus:outline-none"
@@ -132,7 +132,7 @@ const UserReq = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
-        </div>
+        </div> */}
 
         {/* Desktop Navigation Menu (hidden on mobile view) */}
         <div className={`flex-grow md:flex md:items-center md:justify-end ${isServicesDropdownOpen ? 'block' : 'hidden'} md:block`}>

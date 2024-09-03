@@ -8,7 +8,7 @@ import bImage from "../../../assests/bb.jpg";
 const ContentSection = () => {
   return (
     <div>
-      <section className="text-gray-600 body-font">
+      <section className="hidden sm:block text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col">
             <div className="h-1 bg-gray-200 rounded overflow-hidden">
